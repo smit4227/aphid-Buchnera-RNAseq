@@ -7,7 +7,7 @@ These scripts are associated with the publication, "...", doi:... . In this stud
 
 What you will need:
 1) RNA-Seq reads are available for download from NCBI (PRJNA564856)
-2) Download the "Reference Files" folder containing pea aphid and Buchnera genomes and annotation files
+2) The "Reference Files" folder contains the pea aphid and Buchnera genome annotation files, but you will need to download the genome sequence files from NCBI. We used "GCF_000142985.2_Acyr_2.0_genomic.fna" for A. pisum and "GCF_000009605.1_ASM960v1_genomic.fna" for Buchnera.
 3) bash programs:
   fastqc
   fastx
@@ -49,6 +49,8 @@ What to do:
 4) To correlate host and symbiont gene expression, follow the R scripts in the "HostSymbiontGeneCorrelation" folder from "1_CorrelationAnalysis.R" to "4_EnrichmentTables".
 5) Many figures were constructed in R using custom scripts located in the "Plots" folder. Follow R scripts from "1_PCA.R" to "3_SIMPROF.R" to generate them. 
 6) For WGCNA, follow the R scripts located in foler "WGCNA", from "1_DataInputAndCleaning.R" to "5_FunctionalEnrichmentBa.R".
+
+Note: Functional enrichment analyses using clusterProfiler and pathview R packages utilize customized "cnetplot" and "pathview" functions. These have "TES" appended to the name and are located in the "CustomRFunctions" folder.
 
 
 Updated Sep 2019
