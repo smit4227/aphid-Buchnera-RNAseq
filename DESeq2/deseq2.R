@@ -110,7 +110,7 @@ gffNames <- c("seqname", "source", "feature", "start", "end", "score", "strand",
               "frame", "attribute")
 names(gffAp) <- gffNames
 table <- gffAp
-library(rapportools)
+
 
 # acquire information on "gene" features
 # create an empty table to fill with gene information
@@ -125,14 +125,14 @@ for (i in 1:nrow(table))
     # pull out geneNumber info and add to geneInfo table
     id <- grep("ID=", s[[1]])
     ids <- gsub("ID=", "", s[[1]][id])
-    if (!is.empty(ids)) {
+    if (!is.na(ids)) {
       geneInfoAp$geneNumber[i] <- ids
     }
     
     # pull out gene locus info and add to geneInfo table
     l <- grep("Name=", s[[1]])
     loc <- gsub("Name=", "", s[[1]][l])
-    if (!is.empty(loc)) {
+    if (!is.na(loc)) {
       geneInfoAp$locus[i] <- loc
     }
   }
@@ -150,14 +150,14 @@ for (i in 1:nrow(table))
     # pull out parent geneNumber info and add to rnaInfo table
     p <- grep("Parent=", s0[[1]])
     parent <- gsub("Parent=", "", s0[[1]][p])
-    if (!is.empty(parent)) {
+    if (!is.na(parent)) {
       rnaInfoAp$geneNumber[i] <- parent
     }
     
     # pull out parent rnaNumber info and add to rnaInfo table
     r <- grep("ID=", s0[[1]])
     rna <- gsub("ID=", "", s0[[1]][r])
-    if (!is.empty(rna)) {
+    if (!is.na(rna)) {
       rnaInfoAp$rnaNumber[i] <- rna
     }
     
@@ -166,14 +166,14 @@ for (i in 1:nrow(table))
     # pull out transcript accession number info and add to rnaInfo table
     a <- grep("Name=", s0[[1]])
     acc <- gsub("Name=", "", s0[[1]][a])
-    if (!is.empty(acc)) {
+    if (!is.na(acc)) {
       rnaInfoAp$rnaName[i] <- acc
     }
     
     # pull out transcript product info and add to rnaInfo table
     p <- grep("product=", s0[[1]])
     product <- gsub("product=", "", s0[[1]][p])
-    if (!is.empty(product)) {
+    if (!is.na(product)) {
       rnaInfoAp$product[i] <- product
     }
   }
@@ -184,14 +184,14 @@ for (i in 1:nrow(table))
     # pull out parent geneNumber info and add to rnaInfo table
     p <- grep("Parent=", s0[[1]])
     parent <- gsub("Parent=", "", s0[[1]][p])
-    if (!is.empty(parent)) {
+    if (!is.na(parent)) {
       rnaInfoAp$geneNumber[i] <- parent
     }
     
     # pull out parent rnaNumber info and add to rnaInfo table
     r <- grep("ID=", s0[[1]])
     rna <- gsub("ID=", "", s0[[1]][r])
-    if (!is.empty(rna)) {
+    if (!is.na(rna)) {
       rnaInfoAp$rnaNumber[i] <- rna
     }
     
@@ -200,14 +200,14 @@ for (i in 1:nrow(table))
     # pull out transcript accession number info and add to rnaInfo table
     n <- grep("Name=", s0[[1]])
     name <- gsub("Name=", "", s0[[1]][n])
-    if (!is.empty(name)) {
+    if (!is.na(name)) {
       rnaInfoAp$rnaName[i] <- name
     }
     
     # pull out transcript product info and add to rnaInfo table
     p <- grep("product=", s0[[1]])
     product <- gsub("product=", "", s0[[1]][p])
-    if (!is.empty(product)) {
+    if (!is.na(product)) {
       rnaInfoAp$product[i] <- product
     }
   }
@@ -223,14 +223,14 @@ for (i in 1:nrow(table))
     # pull out parent RNA info and add to protInfo table
     p <- grep("Parent=", s[[1]])
     parent <- gsub("Parent=", "", s[[1]][p])
-    if (!is.empty(parent)) {
+    if (!is.na(parent)) {
       protInfoAp$rnaNumber[i] <- parent
     }
     
     # pull out protein accession number info and add to protInfo table
     n <- grep("Name=", s[[1]])
     name <- gsub("Name=", "", s[[1]][n])
-    if (!is.empty(name)) {
+    if (!is.na(name)) {
       protInfoAp$protName[i] <- name
     }
   }
@@ -360,7 +360,7 @@ gffNames <- c("seqname", "source", "feature", "start", "end", "score", "strand",
               "frame", "attribute")
 names(gffBa) <- gffNames
 table <- gffBa
-library(rapportools)
+
 
 # "gene" features
 geneInfoBa <- data.frame(geneNumber = rep(NA, nrow(table)), 
@@ -375,28 +375,28 @@ for (i in 1:nrow(table))
     # pull out geneNumber info and add to geneInfo table
     id <- grep("ID=", s[[1]])
     ids <- gsub("ID=", "", s[[1]][id])
-    if (!is.empty(ids)) {
+    if (!is.na(ids)) {
       geneInfoBa$geneNumber[i] <- ids
     }
     
     # pull out gene symbol info and add to geneInfo table
     sym <- grep("Name=", s[[1]])
     symbol <- gsub("Name=", "", s[[1]][sym])
-    if (!is.empty(symbol)) {
+    if (!is.na(symbol)) {
       geneInfoBa$geneSymbol[i] <- symbol
     }
     
     # pull out gene locus info and add to geneInfo table
     l <- grep("Dbxref=", s[[1]])
     loc <- gsub("Dbxref=GeneID:", "", s[[1]][l])
-    if (!is.empty(loc)) {
+    if (!is.na(loc)) {
       geneInfoBa$locus[i] <- loc
     }
     
     # pull out gene locus tag info and add to geneInfo table
     l <- grep("locus_tag=", s[[1]])
     loc <- gsub("locus_tag=", "", s[[1]][l])
-    if (!is.empty(loc)) {
+    if (!is.na(loc)) {
       geneInfoBa$locus_tag[i] <- loc
     }
   }
@@ -414,14 +414,14 @@ for (i in 1:nrow(table))
     # pull out parent geneNumber info and add to rnaInfo table
     p <- grep("Parent=", s0[[1]])
     parent <- gsub("Parent=", "", s0[[1]][p])
-    if (!is.empty(parent)) {
+    if (!is.na(parent)) {
       rnaInfoBa$geneNumber[i] <- parent
     }
     
     # pull out parent rnaNumber info and add to rnaInfo table
     r <- grep("ID=", s0[[1]])
     rna <- gsub("ID=", "", s0[[1]][r])
-    if (!is.empty(rna)) {
+    if (!is.na(rna)) {
       rnaInfoBa$rnaNumber[i] <- rna
     }
     
@@ -430,7 +430,7 @@ for (i in 1:nrow(table))
     # pull out transcript product info and add to rnaInfo table
     p <- grep("product=", s0[[1]])
     product <- gsub("product=", "", s0[[1]][p])
-    if (!is.empty(product)) {
+    if (!is.na(product)) {
       rnaInfoBa$product[i] <- product
     }
   }
@@ -441,14 +441,14 @@ for (i in 1:nrow(table))
     # pull out parent geneNumber info and add to rnaInfo table
     p <- grep("Parent=", s0[[1]])
     parent <- gsub("Parent=", "", s0[[1]][p])
-    if (!is.empty(parent)) {
+    if (!is.na(parent)) {
       rnaInfoBa$geneNumber[i] <- parent
     }
     
     # pull out parent rnaNumber info and add to rnaInfo table
     r <- grep("ID=", s0[[1]])
     rna <- gsub("ID=", "", s0[[1]][r])
-    if (!is.empty(rna)) {
+    if (!is.na(rna)) {
       rnaInfoBa$rnaNumber[i] <- rna
     }
     
@@ -457,7 +457,7 @@ for (i in 1:nrow(table))
     # pull out transcript product info and add to rnaInfo table
     p <- grep("product=", s0[[1]])
     product <- gsub("product=", "", s0[[1]][p])
-    if (!is.empty(product)) {
+    if (!is.na(product)) {
       rnaInfoBa$product[i] <- product
     }
   }
@@ -474,21 +474,21 @@ for (i in 1:nrow(table))
     # pull out parent RNA info and add to protInfo table
     p <- grep("Parent=", s[[1]])
     parent <- gsub("Parent=", "", s[[1]][p])
-    if (!is.empty(parent)) {
+    if (!is.na(parent)) {
       protInfoBa$geneNumber[i] <- parent
     }
     
     # pull out protein accession number info and add to protInfo table
     n <- grep("Name=", s[[1]])
     name <- gsub("Name=", "", s[[1]][n])
-    if (!is.empty(name)) {
+    if (!is.na(name)) {
       protInfoBa$protName[i] <- name
     }
     
     # pull out protein accession number info and add to protInfo table
     p <- grep("product=", s[[1]])
     product <- gsub("product=", "", s[[1]][p])
-    if (!is.empty(product)) {
+    if (!is.na(product)) {
       protInfoBa$product[i] <- product
     }
   }
